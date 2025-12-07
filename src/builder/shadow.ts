@@ -119,12 +119,6 @@ export function buildDropShadow(
     }
   }
 
-  if (!transparentText) {
-    merge += buildXMLString('feMergeNode', {
-      in: 'SourceGraphic',
-    })
-  }
-
   return buildXMLString(
     'filter',
     {
