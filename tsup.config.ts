@@ -3,10 +3,17 @@ import { join } from 'path'
 import { replace } from 'esbuild-plugin-replace'
 
 const isStandaloneBuild = !!process.env.SATORI_STANDALONE
+const isAsmjsBuild = !!process.env.SATORI_ASMJS
+
+function getEntryName() {
+  if (isStandaloneBuild) return 'standalone'
+  if (isAsmjsBuild) return 'asmjs'
+  return 'index'
+}
 
 export default defineConfig({
   entry: {
-    [isStandaloneBuild ? 'standalone' : 'index']: 'src/index.ts',
+    [getEntryName()]: 'src/index.ts',
     'jsx/index': 'src/jsx/index.ts',
     'jsx/jsx-runtime': 'src/jsx/jsx-runtime.ts',
   },
@@ -26,6 +33,10 @@ export default defineConfig({
   env: isStandaloneBuild
     ? {
         SATORI_STANDALONE: '1',
+      }
+    : isAsmjsBuild
+    ? {
+        SATORI_ASMJS: '1',
       }
     : {},
   esbuildPlugins: [
