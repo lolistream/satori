@@ -29,6 +29,9 @@ export default defineConfig({
   esbuildOptions(options) {
     options.tsconfig = 'tsconfig.json'
     options.legalComments = 'external'
+    if (isAsmjsBuild) {
+      options.define = { ...options.define, 'import.meta.url': '""' }
+    }
   },
   env: isStandaloneBuild
     ? {
