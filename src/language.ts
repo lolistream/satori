@@ -23,25 +23,29 @@ const emojiRegex = new RegExp(createEmojiRegex(), 'u')
 
 const specialCode = {
   emoji: emojiRegex,
-  symbol: /\p{Symbol}/u,
-  math: /\p{Math}/u,
+  symbol:
+    /[\u0024\u002B\u003C-\u003E\u005E\u0060\u007C\u007E\u00A2-\u00A6\u00A8\u00A9\u00AC\u00AE-\u00B1\u00B4\u00B8\u00D7\u00F7\u2190-\u23FF\u2500-\u2775\u2794-\u2BFF\u2E80-\u2EFF\u3004\u3012\u3013\u3020\u3036\u3037\u303E\u303F\uFE62\uFE64-\uFE66\uFE69\uFF04\uFF0B\uFF1C-\uFF1E\uFF3E\uFF40\uFF5C\uFF5E\uFFE0-\uFFE6\uFFE8-\uFFEE\uFFFC\uFFFD]/,
+  math: /[\u002B\u003C-\u003E\u007C\u007E\u00AC\u00B1\u00D7\u00F7\u2044\u2052\u207A-\u207C\u208A-\u208C\u2140-\u2144\u214B\u2190-\u22FF\u2308-\u230B\u237C\u239B-\u23B5\u23B7\u23DC-\u23E2\u27C0-\u27FF\u2900-\u2AFF\u2B30-\u2B44\u2B47-\u2B4C]/,
 } as const
 
 const code = {
-  'ja-JP': /\p{scx=Hira}|\p{scx=Kana}|\p{scx=Han}|[\u3000]|[\uFF00-\uFFEF]/u,
-  'ko-KR': /\p{scx=Hangul}/u,
-  'zh-CN': /\p{scx=Han}/u,
-  'zh-TW': /\p{scx=Han}/u,
-  'zh-HK': /\p{scx=Han}/u,
-  'th-TH': /\p{scx=Thai}/u,
-  'bn-IN': /\p{scx=Bengali}/u,
-  'ar-AR': /\p{scx=Arabic}/u,
-  'ta-IN': /\p{scx=Tamil}/u,
-  'ml-IN': /\p{scx=Malayalam}/u,
-  'he-IL': /\p{scx=Hebrew}/u,
-  'te-IN': /\p{scx=Telugu}/u,
-  devanagari: /\p{scx=Devanagari}/u,
-  kannada: /\p{scx=Kannada}/u,
+  'ja-JP':
+    /[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF\u3400-\u4DBF\u3000\uFF00-\uFFEF]/,
+  'ko-KR':
+    /[\u1100-\u11FF\u3130-\u318F\uA960-\uA97F\uAC00-\uD7AF\uD7B0-\uD7FF]/,
+  'zh-CN': /[\u4E00-\u9FFF\u3400-\u4DBF\u2E80-\u2FFF\uF900-\uFAFF]/,
+  'zh-TW': /[\u4E00-\u9FFF\u3400-\u4DBF\u2E80-\u2FFF\uF900-\uFAFF]/,
+  'zh-HK': /[\u4E00-\u9FFF\u3400-\u4DBF\u2E80-\u2FFF\uF900-\uFAFF]/,
+  'th-TH': /[\u0E00-\u0E7F]/,
+  'bn-IN': /[\u0980-\u09FF]/,
+  'ar-AR':
+    /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/,
+  'ta-IN': /[\u0B80-\u0BFF]/,
+  'ml-IN': /[\u0D00-\u0D7F]/,
+  'he-IL': /[\u0590-\u05FF\uFB1D-\uFB4F]/,
+  'te-IN': /[\u0C00-\u0C7F]/,
+  devanagari: /[\u0900-\u097F\uA8E0-\uA8FF]/,
+  kannada: /[\u0C80-\u0CFF]/,
 } as const
 
 type SpecialCodeKey = keyof typeof specialCode
