@@ -66,7 +66,7 @@
     }
   },
   "scripts": {
-    "prepare": "(husky install || true) && (cd node_modules/yoga-layout && patch -p1 -N < ../../patches/yoga-layout@3.2.1.patch || true) && NODE_ENV=production tsup && NODE_ENV=production SATORI_STANDALONE=1 tsup && NODE_ENV=production SATORI_ASMJS=1 tsup",
+    "prepare": "husky install && NODE_ENV=production tsup && NODE_ENV=production SATORI_STANDALONE=1 tsup && NODE_ENV=production SATORI_ASMJS=1 tsup",
     "dev": "pnpm run dev:default",
     "dev:default": "NODE_ENV=development tsup src/index.ts --watch --ignore-watch playground",
     "dev:playground": "turbo dev --filter=satori-playground...",
@@ -149,10 +149,5 @@
   "packageManager": "pnpm@10.33.0",
   "engines": {
     "node": ">=16"
-  },
-  "pnpm": {
-    "patchedDependencies": {
-      "yoga-layout@3.2.1": "patches/yoga-layout@3.2.1.patch"
-    }
   }
 }
