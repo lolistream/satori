@@ -215,6 +215,9 @@ function computeBandBox(
   return boxes
 }
 
+/* c8 ignore start */
+// Currently unused. Kept for potential future use by callers that want a
+// glyph-level bounding box without the skip-ink band.
 function computeBoundingBox(
   commands: opentype.Path['commands']
 ): GlyphBox | null {
@@ -241,6 +244,7 @@ function computeBoundingBox(
     y2: Math.max(...ys),
   }
 }
+/* c8 ignore stop */
 
 function compareFont(
   weight,
